@@ -1,0 +1,35 @@
+
+client_conf:
+  request_timeout: 30
+  retry_attempts: 3
+
+api_calls:
+  - path: /_security/role/kibana-filebeat-reader
+    payload: |-
+      {
+          "cluster" : [ ],
+          "indices" : [
+            {
+              "names" : [
+                "filebeat*"
+              ],
+              "privileges" : [
+                "read"
+              ],
+              "allow_restricted_indices" : false
+            }
+          ],
+          "applications" : [
+            {
+              "application" : "kibana-.kibana",
+              "privileges" : [
+                "feature_dashboard.all",
+                "feature_discover.all",
+                "feature_logs.all"
+              ],
+              "resources" : [
+                "space:default"
+              ]
+            }
+          ]
+        }

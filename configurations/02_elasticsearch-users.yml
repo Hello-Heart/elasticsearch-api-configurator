@@ -1,0 +1,19 @@
+client_conf:
+  request_timeout: 30
+  retry_attempts: 3
+
+api_calls:
+  - path: /_security/user/test.user
+    payload: |-
+      {
+        "password_hash": "$2y$10$yb27LPlXAbPTgIS5Rvt2Cui7OKmwCor8FtZmdqF4MzBBY6aU0uZrm", # htpasswd -nBb -C 10 password 'password' 
+        "full_name" : "Test User",
+        "email" : "foo@example.com",
+        "enabled": true,
+        "roles" : [ "kibana-filebeat-reader" ]
+      }
+
+
+
+
+

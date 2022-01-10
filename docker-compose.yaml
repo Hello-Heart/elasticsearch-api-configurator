@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  elasticsearch-api-configurator:
+    container_name: elasticsearch-api-configurator
+    build:
+      context: .
+    volumes:
+      - ./configurations:/configurations
+    environment:
+      - API_HOST=https://docker.for.mac.localhost
+      - API_PORT=9200
+      - BASIC_AUTH_USERNAME
+      - BASIC_AUTH_PASSWORD
