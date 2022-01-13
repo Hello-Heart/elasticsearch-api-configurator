@@ -1,0 +1,28 @@
+
+client_conf:
+  request_timeout: 30
+  retry_attempts: 3
+
+api_calls:
+  - path: /_ilm/policy/my-policy
+    payload: |-
+      {
+        "policy" : {
+          "phases" : {
+            "warm": {
+               "min_age": "2d",
+               "actions": {
+                 "readonly": {}
+               }
+              },
+              "delete" : {
+                "min_age" : "90d",
+                "actions" : {
+                  "delete" : {
+                    "delete_searchable_snapshot" : true
+                  }
+                }
+              }
+            }
+          }
+        }
